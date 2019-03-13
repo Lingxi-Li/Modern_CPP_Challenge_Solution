@@ -16,7 +16,7 @@ public:
         acc = acc * 10 + (*str - '0');
       }
       else {
-        value = value * 256 + std::exchange(acc, 0);
+        value = (value << 8) + std::exchange(acc, 0);
       }
     }
     while (*str++);
