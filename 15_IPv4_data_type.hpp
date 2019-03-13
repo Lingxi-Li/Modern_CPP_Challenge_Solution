@@ -30,13 +30,10 @@ public:
   }
     
   friend std::ostream& operator<<(std::ostream& os, ipv4addr addr) {
-    constexpr std::uint32_t bases[] = { 256 * 256 * 256, 256 * 256, 256 };
-    auto val = addr.value;
-    for (auto base : bases) {
-      os << val / base << '.';
-      val = val % base;
-    }
-    return os << val;
+    return os << (addr.value >> 24)        << '.'
+              << (addr.value >> 16 & 0xFF) << '.'
+              << (addr.value >> 8 & 0xFF)  << '.'
+              << (addr.value & 0xFF);
   }
   
 private:
