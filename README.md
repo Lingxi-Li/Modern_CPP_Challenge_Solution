@@ -4,6 +4,7 @@ Some notes.
 1. I don't bother `constexpr`-specify any function. It's a burden, and not that useful in practice.
 1. I don't bother `explicit`-specify any constructor. I like implicit conversion. If bugs are introduced then, it's your fault :/
 1. If you see something not nice or inferior to the solution given in the book, please [comment][2]. I think I can explain.
+1. No input validation, which should be performed on-demand independently by dedicated code.
 1. For those pedantic, assume `sizeof(int) >= 4` and `CHAR_BIT` is 8.
 1. Thanks for watching :]
 
