@@ -1,8 +1,10 @@
 #include <cctype>
 #include <cstdint>
+#include <initializer_list>
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <type_traits>
 #include <utility>
 
 class ipv4addr {
@@ -10,6 +12,13 @@ public:
   ipv4addr(std::uint32_t value = 0) noexcept
     : value(value) {}
 
+  template <typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+  ipv4addr(std::initializer_list<T> parts) noexcept {
+    for (auto part : parts) {
+      value = (value << 8) + static_cast<std::uint8_t>(part);
+    }
+  }
+  
   ipv4addr(const char* str) noexcept {
     std::uint32_t acc = 0;
     do {
