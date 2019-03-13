@@ -1,6 +1,7 @@
 #include <cctype>
 #include <cstdint>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <utility>
 
@@ -27,6 +28,12 @@ public:
   
   std::uint32_t to_uint32() const noexcept {
     return value;
+  }
+  
+  std::string to_string() const {
+    std::ostringstream os;
+    os << *this;
+    return os.str();
   }
     
   friend std::ostream& operator<<(std::ostream& os, ipv4addr addr) {
