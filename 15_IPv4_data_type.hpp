@@ -1,5 +1,6 @@
 #include <cctype>
 #include <cstdint>
+#include <array>
 #include <initializer_list>
 #include <iostream>
 #include <sstream>
@@ -43,6 +44,15 @@ public:
     std::ostringstream os;
     os << *this;
     return os.str();
+  }
+  
+  std::array<std::uint8_t, 4> to_array() const noexcept {
+    return {
+      static_cast<std::uint8_t>(value >> 24),
+      static_cast<std::uint8_t>(value >> 16 & 0xFF),
+      static_cast<std::uint8_t>(value >> 8 & 0xFF),
+      static_cast<std::uint8_t>(value & 0xFF)
+    };
   }
     
   friend std::ostream& operator<<(std::ostream& os, ipv4addr addr) {
