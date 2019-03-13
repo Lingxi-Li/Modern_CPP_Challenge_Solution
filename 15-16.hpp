@@ -36,9 +36,8 @@ public:
   ipv4addr(const std::string& str) noexcept
     : ipv4addr(str.c_str()) {}
   
-  std::uint32_t to_uint32() const noexcept {
-    return value;
-  }
+  operator std::uint32_t&() noexcept { return value; }
+  operator const std::uint32_t&() const noexcept { return value; }
   
   std::string to_string() const {
     std::ostringstream os;
