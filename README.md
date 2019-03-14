@@ -6,6 +6,7 @@ Some notes.
 1. If you see something not nice or inferior to the solution given in the book, please [comment][2]. I think I can explain.
 1. No input validation, which should be performed on-demand independently by dedicated code.
 1. Prefer to implement non-member `swap`. See C++ named requirement [*Swappable*][3].
+1. For copy control, if implicit definitions are fine, don't bother define yourself.
 1. For those pedantic, assume `sizeof(int) >= 4`, `CHAR_BIT` is 8, and two's complement.
 1. Thanks for watching :]
 
